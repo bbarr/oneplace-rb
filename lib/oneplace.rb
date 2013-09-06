@@ -16,6 +16,10 @@ class OnePlace
     request "/places/#{source}/#{id}", { props: props.join(',') }
   end
 
+  def search source, terms
+    request "/places/#{source}", { terms: terms }
+  end
+
   def request url, params
 
     now = Time.now.to_i
