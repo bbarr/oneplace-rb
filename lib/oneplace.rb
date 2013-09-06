@@ -1,7 +1,9 @@
 require "rubygems"
 require "httparty"
 require "digest/md5"
-require 'net/http'
+require "net/http"
+require "cgi"
+require "json"
 
 class OnePlace
   include HTTParty
@@ -16,8 +18,8 @@ class OnePlace
     request "/places/#{source}/#{id}", { props: props.join(',') }
   end
 
-  def search source, terms
-    request "/places/#{source}", { terms: terms }
+  def search source, terms, props
+    request "/places/#{source}", { terms: URI.escape(JSON.generate(terms), Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")), props: props.join(',') }
   end
 
   def request url, params
