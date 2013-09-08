@@ -14,8 +14,8 @@ class OnePlace
     @private_key = priv
   end
 
-  def place source, id, props
-    request "/places/#{source}/#{id}", { props: props.join(',') }
+  def place id, source, props
+    request "/places/#{id}/#{source}", { props: props.join(',') }
   end
 
   def search source, terms, props
@@ -33,8 +33,7 @@ class OnePlace
     })
 
     uri = URI('http://localhost:3000' + url)
-    params = fullParams
-    uri.query = URI.encode_www_form(params)
+    uri.query = URI.encode_www_form(fullParams)
 
     res = Net::HTTP.get_response(uri) 
   end
