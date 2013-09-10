@@ -14,8 +14,8 @@ class OnePlace
     @private_key = priv
   end
 
-  def place id, source, props
-    request "/places/#{id}/#{source}", { props: props.join(',') }
+  def details source, ids, props
+    request "/places/#{source}", { ids: ids.join(','), props: props.join(',') }
   end
 
   def search source, terms, props
