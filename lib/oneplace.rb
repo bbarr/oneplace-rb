@@ -7,7 +7,7 @@ require "json"
 
 class OnePlace
   include HTTParty
-  base_uri 'localhost:3000'
+  base_uri 'poic.herokuapp.com'
 
   def initialize pub, priv
     @public_key = pub
