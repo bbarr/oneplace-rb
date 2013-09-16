@@ -32,7 +32,7 @@ class OnePlace
       publicKey: @public_key
     })
 
-    uri = URI('poic.herokuapp.com' + url)
+    uri = URI('http://poic.herokuapp.com' + url)
     uri.query = URI.encode_www_form(fullParams)
 
     res = Net::HTTP.get_response(uri) 
